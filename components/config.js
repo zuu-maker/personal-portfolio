@@ -31,6 +31,30 @@ export const portfolioItems = [
     color: "#6366f1",
   },
   {
+    title: "Portfolio Website",
+    description:
+      "My original developer portfolio showcasing a clean, responsive design with smooth scroll animations, dark mode support, and an interactive project gallery. Built to establish my personal brand and demonstrate frontend expertise.",
+    demo: "https://portfolio-hazel-mu-87.vercel.app/",
+    code: "",
+    image: "/portfolio/port.png",
+    videos: [], // Add video URLs here: ["https://youtube.com/...", "https://vimeo.com/..."]
+    tags: ["Next.js", "Franer-motion", "Tailwind css"],
+    featured: true,
+    color: "#6366f1",
+  },
+  {
+    title: "Student Progress Tracking System",
+    description:
+      "An intelligent classroom management system where teachers create and assign quizzes to track student performance. Features AI-driven analytics that identify struggling topics, visualize learning trends, and generate actionable insights to help educators personalize instruction and improve outcomes.",
+    demo: "",
+    code: "",
+    image: "/portfolio/gifted-minds.png",
+    videos: [], // Add video URLs here: ["https://youtube.com/...", "https://vimeo.com/..."]
+    tags: ["Next.js", "LMS", "Analytics"],
+    featured: true,
+    color: "#6366f1",
+  },
+  {
     title: "Lungisa Quotation Manager",
     description:
       "Enterprise quotation management system streamlining the sales process with automated calculations, PDF generation, and customer relationship features.",
@@ -117,7 +141,15 @@ export const services = [
     description:
       "End-to-end web applications with modern frameworks, secure backends, and scalable databases.",
     icon: "code",
-    tools: ["React", "Next.js", "Node.js", "FastAPI", "PostgreSQL", "MongoDB"],
+    tools: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "FastAPI",
+      "PostgreSQL",
+      "MongoDB",
+      "c#",
+    ],
     gradient: "from-blue-500 to-cyan-500",
   },
   {

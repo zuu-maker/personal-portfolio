@@ -46,6 +46,7 @@ export default function Home() {
   return (
     <div className="relative bg-gray-950 text-white min-h-screen overflow-x-hidden">
       {/* Global styles */}
+      <link rel="icon" href="/portfolio/favicon.ico" sizes="any" />
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 

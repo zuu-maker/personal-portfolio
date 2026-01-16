@@ -6,6 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { CONFIG, portfolioItems } from "./config";
+import ProjectModal from "./ProjectModal";
 
 function PortfolioSection({ portfolioRef }) {
   const [selectedItem, setSelectedItem] = useState(null);

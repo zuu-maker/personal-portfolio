@@ -14,39 +14,26 @@ function ContactSection({ contactRef }) {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus("sending");
 
-    try {
-      // Using EmailJS
-      const response = await fetch(
-        "https://api.emailjs.com/api/v1.0/email/send",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            service_id: CONFIG.emailjs.serviceId,
-            template_id: CONFIG.emailjs.templateId,
-            user_id: CONFIG.emailjs.publicKey,
-            template_params: formState,
-          }),
-        }
-      );
+    // Build the mailto link with form data
+    const { name, email, subject, message } = formState;
+    const body = `Hi Mkhuzo,
 
-      if (response.ok) {
-        setStatus("success");
-        setFormState({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+${message}
 
-    setTimeout(() => setStatus(null), 5000);
+---
+From: ${name}
+Email: ${email}`;
+
+    const mailtoLink = `mailto:${CONFIG.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Open the user's email client
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -135,62 +122,25 @@ function ContactSection({ contactRef }) {
 
           <motion.button
             type="submit"
-            disabled={status === "sending"}
-            className="w-full py-4 bg-linear-to-r from-cyan-500 to-teal-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 bg-linear-to-r from-cyan-500 to-teal-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 transition-all flex items-center justify-center gap-2"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            {status === "sending" ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="w-5 h-5 animate-spin"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                  />
-                </svg>
-                Sending...
-              </span>
-            ) : (
-              "Send Message"
-            )}
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            Open Email Client
           </motion.button>
-
-          {/* Status Messages */}
-          <AnimatePresence>
-            {status === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 text-center"
-              >
-                Message sent successfully! I'll get back to you soon.
-              </motion.div>
-            )}
-            {status === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-400 text-center"
-              >
-                Something went wrong. Please try again.
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.form>
 
         {/* Social Links */}

@@ -6,15 +6,11 @@ export const CONFIG = {
     "I transform complex problems into elegant solutions. Full-stack developer with expertise in AI, machine learning, and modern web technologies.",
   github: "https://github.com/zuu-maker",
   resumeUrl:
-    "https://firebasestorage.googleapis.com/v0/b/resume-903bf.appspot.com/o/pdf%2Fmkhuzo_zulu_cv.pdf?alt=media&token=ffdf9901-2c62-4d4b-890f-430009e8b9b1",
-  email: "contact@example.com",
+    "https://firebasestorage.googleapis.com/v0/b/resume-903bf.appspot.com/o/pdf%2Fmkhuzo%20j%20zulu.pdf?alt=media&token=a1e0e98d-66f7-4e48-8078-1f4f46e301c9",
+  email: "mkhuzozulu@outlook.com",
 
   // EmailJS Config
-  emailjs: {
-    serviceId: "service_3np8zfm",
-    templateId: "template_h89qzyd",
-    publicKey: "AVRzpsyJ3MzLmwy8w",
-  },
+  email: "mkhuzozulu@outlook.com",
 };
 
 export const portfolioItems = [
@@ -29,6 +25,18 @@ export const portfolioItems = [
     tags: ["Next.js", "MongoDB", "Stripe", "LMS"],
     featured: true,
     color: "#6366f1",
+  },
+  {
+    title: "Stock Manager",
+    description:
+      "A precision inventory control system for bars and restaurants featuring a custom algorithm that calculates remaining servings of alcohol based on weight measurements. Streamlines stock auditing with real-time tracking, session-based counting, Excel/PDF exports, and supervisor controls for accurate loss prevention.",
+    demo: "", // Add demo URL if available
+    code: "",
+    image: "/portfolio/stock.png",
+    videos: [],
+    tags: ["Next.js", "Inventory", "Algorithm", "Audit"],
+    featured: true,
+    color: "#22c55e",
   },
   {
     title: "Portfolio Website",

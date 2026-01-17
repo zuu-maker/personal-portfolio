@@ -6,7 +6,7 @@ export const CONFIG = {
     "I transform complex problems into elegant solutions. Full-stack developer with expertise in AI, machine learning, and modern web technologies.",
   github: "https://github.com/zuu-maker",
   resumeUrl:
-    "https://firebasestorage.googleapis.com/v0/b/resume-903bf.appspot.com/o/pdf%2Fmkhuzo%20j%20zulu%20(2).pdf?alt=media&token=81b39f3a-8a31-4cf7-abb0-e339805843e6",
+    "https://firebasestorage.googleapis.com/v0/b/resume-903bf.appspot.com/o/pdf%2Fmkhuzo%20j%20zulu%20cv.pdf?alt=media&token=3b615c9b-4463-4c1d-a565-977d292f54bf",
   email: "mkhuzozulu@outlook.com",
 
   // EmailJS Config

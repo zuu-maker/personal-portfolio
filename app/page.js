@@ -33,7 +33,7 @@ export default function Home() {
               setActiveSection(id);
             }
           },
-          { threshold: 0.3 }
+          { threshold: 0.3 },
         );
         observer.observe(ref.current);
         observers.push(observer);

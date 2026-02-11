@@ -1,10 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { CONFIG, portfolioItems } from "./config";
 import ProjectModal from "./ProjectModal";
 
@@ -77,30 +72,34 @@ function PortfolioSection({ portfolioRef }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -10 }}
                 onClick={() => setSelectedItem(item)}
                 className="group cursor-pointer"
               >
-                <div className="relative rounded-2xl overflow-hidden bg-gray-800">
-                  {/* Project Image */}
-                  <div className="aspect-video relative overflow-hidden">
+                <div className="relative rounded-2xl overflow-hidden bg-gray-800 transition-transform duration-300 ease-out group-hover:-translate-y-2">
+                  {/* 
+                    Project Image area
+                    - bg-gray-900 on the container so when image darkens, 
+                      the dark bg shows through instead of white
+                    - NO overlay divs, NO gradient divs
+                    - Just the image with a brightness filter
+                  */}
+                  <div className="aspect-video relative bg-gray-900">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-[0.3]"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-gray-900/20 to-transparent" />
 
                     {/* Featured Badge */}
                     {item.featured && (
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/90 backdrop-blur-sm rounded-full text-xs font-medium text-white">
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/90 rounded-full text-xs font-medium text-white">
                         Featured
                       </div>
                     )}
 
                     {/* Video indicator */}
                     {item.videos?.length > 0 && (
-                      <div className="absolute top-4 right-4 px-3 py-1 bg-red-500/90 backdrop-blur-sm rounded-full text-xs font-medium text-white flex items-center gap-1">
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-red-500/90 rounded-full text-xs font-medium text-white flex items-center gap-1">
                         <svg
                           className="w-3 h-3"
                           fill="currentColor"
@@ -113,33 +112,27 @@ function PortfolioSection({ portfolioRef }) {
                       </div>
                     )}
 
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-gray-900/60 backdrop-blur-sm">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileHover={{ scale: 1.1 }}
-                        className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center"
+                    {/* Eye icon - just the circle, no full-coverage div */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/15 flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-300 ease-out pointer-events-none">
+                      <svg
+                        className="w-8 h-8 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        <svg
-                          className="w-8 h-8 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                          />
-                        </svg>
-                      </motion.div>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                      </svg>
                     </div>
                   </div>
 
